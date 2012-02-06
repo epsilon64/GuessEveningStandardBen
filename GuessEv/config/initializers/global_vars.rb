@@ -1,0 +1,1 @@
+#GuessEv::Application.RESTART_TIME_HOUR = 18
