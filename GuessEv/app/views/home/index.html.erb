@@ -1,2 +1,19 @@
-<div> Home model #index </div>
-<b><u> Coucou mon doudou, tu vas lire ca dans safari </u></b>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>Home page</TITLE>
+
+   </HEAD>
+   <BODY>
+
+   	<h1>Home page</h1>
+
+   	<%= form_tag("/title/new", :method => "get") do %>
+  		<%= label_tag(:q, "Post your headline:") %>
+  		<%= text_field_tag(:q) %>
+  		<%= submit_tag("Post") %>
+	<% end %>
+      
+   </BODY>
+</HTML>
