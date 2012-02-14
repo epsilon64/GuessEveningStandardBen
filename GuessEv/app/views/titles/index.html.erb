@@ -7,29 +7,23 @@
    </HEAD>
    <BODY>
 
-   		Guess evening standard
+           Guess evening standard
 
-	<table>
-	  <tr>
-	    <th>Title</th>
-	    <th>Summary</th>
-	    <th></th>
-	    <th></th>
-	    <th></th>
-	  </tr>
-	 
-	<% @titles.each do |title| %>
-	  <tr>
-	    <td><%= title.name %></td>
-	    <% title.keywords.each do |keyword| %>
-	    	<td><%= keyword.name%></td>
-	    <% end %>
-	    <td><%= link_to 'Show', title %></td>
-    	<td><%= link_to 'Edit', edit_title_path(title) %></td>
-    	<td><%= link_to 'Remove', title, :confirm => 'Are you sure?', :method => :delete %></td>
-	  </tr>
-	<% end %>
-	</table>
+      <%= if @title.errors.any?  %>
+         <%= %>
+      <% end %>   
+
+      <%= form_for @title do |f| %>
+              <%= f.text_field :name %>
+              <%= f.submit "Post" %>
+         <% end %>
+     
+
+    <%= link_to "sign in", new_user_session_path %>
+
+    <%= link_to "logout", destroy_user_session_path, :method => :delete %>
+
+    </table>
       
    </BODY>
 </HTML>
