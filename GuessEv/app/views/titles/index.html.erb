@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+   <HEAD>
+      <TITLE>Title page</TITLE>
+
+   </HEAD>
+   <BODY>
+
+   		Guess evening standard
+
+      <%= if @title.errors.any?  %>
+         <%= %>
+      <% end %>   
+
+      <%= form_for @title do |f| %>
+  			<%= f.text_field :name %>
+  			<%= f.submit "Post" %>
+		 <% end %>
+	 
+
+    <%= link_to "sign in", new_user_session_path %>
+
+    <%= link_to "logout", destroy_user_session_path, :method => :delete %>
+
+	</table>
+      
+   </BODY>
+</HTML>
