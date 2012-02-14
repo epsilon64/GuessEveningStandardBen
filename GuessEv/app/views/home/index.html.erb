@@ -9,9 +9,10 @@
 
    	<h1>Home page</h1>
 
-	<%= form_for @title do |f| %>
-  		<%= f.text_field :title %>
-  		<%= f.submit "Post" %>
+   	<%= form_tag("/title/new", :method => "get") do %>
+  		<%= label_tag(:q, "Post your headline:") %>
+  		<%= text_field_tag(:q) %>
+  		<%= submit_tag("Post") %>
 	<% end %>
       
    </BODY>
