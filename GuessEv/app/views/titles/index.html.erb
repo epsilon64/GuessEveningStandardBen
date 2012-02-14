@@ -24,6 +24,9 @@
 	    <% title.keywords.each do |keyword| %>
 	    	<td><%= keyword.name%></td>
 	    <% end %>
+	    <td><%= link_to 'Show', title %></td>
+    	<td><%= link_to 'Edit', edit_title_path(title) %></td>
+    	<td><%= link_to 'Remove', title, :confirm => 'Are you sure?', :method => :delete %></td>
 	  </tr>
 	<% end %>
 	</table>
