@@ -9,7 +9,17 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+ 
+def getTodayUserPost
+	#GuessEv::Application.RESTART_TIME_HOUR
+	if DateTime.now.hour > 18
+		dateEndInterval = DateTime.civil(DateTime.now.year, DateTime.now.month, DateTime.now.day+1, 18 , 0, 0, Rational(0, 24))
+	else
+		dateEndInterval = DateTime.civil(DateTime.now.year, DateTime.now.month, DateTime.now.day, 18 , 0, 0, Rational(0, 24))
+	end
 
+	return self.titles.where(:created_at => dateEndInterval-1.day..dateEndInterval)
+end
 
 
 end

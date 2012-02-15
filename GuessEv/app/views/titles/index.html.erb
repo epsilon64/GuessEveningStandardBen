@@ -7,23 +7,39 @@
    </HEAD>
    <BODY>
 
-           Guess evening standard
+    <%= render "shared/logger" %> 
 
-      <%= if @title.errors.any?  %>
-         <%= %>
-      <% end %>   
+    <h1> Guess evening standard </h1>
 
-      <%= form_for @title do |f| %>
-              <%= f.text_field :name %>
-              <%= f.submit "Post" %>
-         <% end %>
-     
 
-    <%= link_to "sign in", new_user_session_path %>
+    <div>
+    <% if @title.errors.any?  %>
+      <%= @title.errors.messages[:name] %>
+    <% end %>   
+    </div>
 
-    <%= link_to "logout", destroy_user_session_path, :method => :delete %>
+    <div>
+      
+      <% if user_signed_in?  %>
+        <% p = current_user.getTodayUserPost %>
+        <% if !p.empty? %>
+          <h3> Your today's guess </h3>
+          <%= p.first.name %>
+        <% else %>
+          <%= form_for @title do |f| %>
+            <%= f.text_field :name %>
+            <%= f.submit "Post" %>
+          <% end %>
+        <% end %>
+      <% else %>
+         <%= form_for @title do |f| %>
+            <%= f.text_field :name %>
+            <%= f.submit "Post" %>
+          <% end %>
+      <% end %>
+ 
+    </div> 
 
-    </table>
       
    </BODY>
 </HTML>

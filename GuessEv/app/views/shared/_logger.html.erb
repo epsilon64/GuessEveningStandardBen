@@ -1,0 +1,25 @@
+    <table>
+    <tr>
+      <td>
+      <% if user_signed_in?  %>
+        Signed in as <%= current_user.email %>
+      <% else %>
+        <%= form_for("user", :url => user_session_path) do |f| %>
+        Login:
+        <%= f.text_field :email %>
+        Password:
+        <%= f.password_field :password %>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        <%= f.submit 'Sign in' %>
+        <%= link_to "Forgot your password?", new_password_path('user') %>
+        <% end %>
+      <% end %>
+      </td>
+      <td>
+        <% if user_signed_in?  %>
+          <%= link_to "logout", destroy_user_session_path, :method => :delete %>
+        <% end %>  
+      </td>
+    </tr>
+    </table>

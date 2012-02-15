@@ -11,20 +11,14 @@ def new
 end
 
 def duplicatePostsCheck
-	user = self.user
-	#GuessEv::Application.RESTART_TIME_HOUR
-	if DateTime.now.hour > 18
-		dateEndInterval = DateTime.civil(DateTime.now.year, DateTime.now.month, DateTime.now.day+1, 18 , 0, 0, Rational(0, 24))
-	else
-		dateEndInterval = DateTime.civil(DateTime.now.year, DateTime.now.month, DateTime.now.day, 18 , 0, 0, Rational(0, 24))
-	end
-
-	todayTitlesOfUser = user.titles.where(:created_at => dateEndInterval-1.day..dateEndInterval)
+	todayTitlesOfUser = self.user.getTodayUserPost
 
 	unless todayTitlesOfUser.empty?
 		errors.add :name,  "User #{self.user_id} has already posted today"
 	end
 end
+
+
 
 #At Title creation
 #Create splitted keywords from the new title

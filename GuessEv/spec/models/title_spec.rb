@@ -4,7 +4,7 @@ require 'user'
 
 describe Title do
 
-  	it "shouldn't save a title without user associated" do
+  it "shouldn't save a title without user associated" do
   		@title = Title.new :name => "Un titre"
   		expect {@user.save!}.to raise_error
   end
