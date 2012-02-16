@@ -6,12 +6,9 @@ validate :duplicatePostsCheck
 
 after_create :create_keywords
 
-def new
-	
-end
 
 def duplicatePostsCheck
-	todayTitlesOfUser = self.user.getTodayUserPost
+	todayTitlesOfUser = self.user.getTodayUserTitle
 
 	unless todayTitlesOfUser.empty?
 		errors.add :name,  "User #{self.user_id} has already posted today"

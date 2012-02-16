@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
  
-def getTodayUserPost
+def getTodayUserTitle
 	#GuessEv::Application.RESTART_TIME_HOUR
 	if DateTime.now.hour > 18
 		dateEndInterval = DateTime.civil(DateTime.now.year, DateTime.now.month, DateTime.now.day+1, 18 , 0, 0, Rational(0, 24))

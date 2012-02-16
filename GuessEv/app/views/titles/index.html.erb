@@ -19,25 +19,13 @@
     </div>
 
     <div>
-      
-      <% if user_signed_in?  %>
-        <% p = current_user.getTodayUserPost %>
-        <% if !p.empty? %>
-          <h3> Your today's guess </h3>
-          <%= p.first.name %>
-        <% else %>
-          <%= form_for @title do |f| %>
-            <%= f.text_field :name %>
-            <%= f.submit "Post" %>
-          <% end %>
-        <% end %>
-      <% else %>
-         <%= form_for @title do |f| %>
-            <%= f.text_field :name %>
-            <%= f.submit "Post" %>
-          <% end %>
+     
+      <%= form_for @title do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit "Post" %>
       <% end %>
- 
+
+
     </div> 
 
       

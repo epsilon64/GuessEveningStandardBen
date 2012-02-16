@@ -12,6 +12,7 @@ def create
 	return
 	end 
 	flash[:notice] = "Title created"
-	redirect_to :back
+	redirect_to '/users/todaytitle'
 end
+
 end
