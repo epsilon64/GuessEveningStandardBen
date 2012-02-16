@@ -11,7 +11,6 @@
 
     <h1> Guess evening standard </h1>
 
-
     <div>
     <% if @title.errors.any?  %>
       <%= @title.errors.messages[:name] %>
@@ -19,15 +18,36 @@
     </div>
 
     <div>
-     
       <%= form_for @title do |f| %>
         <%= f.text_field :name %>
         <%= f.submit "Post" %>
       <% end %>
-
-
     </div> 
 
+    <div>
+      <h2> Need inspiration? </h2>
+      <br> Latest headlines </br>
+
+      <table>
+        <% @title_historic.each do |p| %>
+        <tr>
+          <td>  <%= p.created_at %> </td>
+          <td>  <%= p.name %> </td>
+        </tr>
+        <% end %>
+       </table>
+
+       <br> Twitter trends </br>
+
+        <table>
+        <% @tweet_trends.each do |p| %>
+        <tr>
+          <td>  <%= p %> </td>
+        </tr>
+        <% end %>
+       </table>
+        
+    </div>
       
    </BODY>
 </HTML>

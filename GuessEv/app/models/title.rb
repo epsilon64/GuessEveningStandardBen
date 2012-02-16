@@ -1,5 +1,9 @@
 class Title < ActiveRecord::Base
 
+require 'open-uri'
+require 'json'
+require 'nokogiri'
+
 validates :name, :presence => true
 validates :user_id, :presence => true
 validate :duplicatePostsCheck
@@ -49,13 +53,21 @@ end
 
 #Gets the Evening Standard latest Headline
 def self.getESTitle
-	require 'open-uri'
 	rssSrc = Nokogiri::HTML(open("http://standardonline.newspaperdirect.com/epaper/services/rss.ashx?cid=1237&type=full"))
 	pRSS = rssSrc.xpath('//item/title')
 	esTitle = pRSS.first.text
 	#Parsed text is "DD/MM/YYYY: FRONT PAGE: TITLE IS HERE"
 	#Need to get rid of the 24 first chars
 	esTitle = esTitle.last(esTitle.length - 24)
+end
+
+def self.getTwitterTrends
+	tweet_trends = []
+	jsonSrc = JSON.parse(open("http://api.twitter.com/1/trends/44418.json").read)
+	jsonSrc.first["trends"].each do |p|
+		tweet_trends << p["name"]
+	end
+	return tweet_trends
 end
 
 has_and_belongs_to_many :keywords

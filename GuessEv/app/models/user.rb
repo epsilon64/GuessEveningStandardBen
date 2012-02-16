@@ -23,3 +23,7 @@ end
 
 
 end
+
+class SuperUser < User
+
+end

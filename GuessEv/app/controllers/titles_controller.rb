@@ -1,7 +1,22 @@
 class TitlesController < ApplicationController
 
+require 'user'
+
 def index
 	@title = Title.new
+
+	p = SuperUser.first
+
+	answer = p.getTodayUserTitle
+	if answer.empty?
+		title_of_the_day = Title.getESTitle
+		p.titles.create :name => title_of_the_day
+	end
+
+	@title_historic = p.titles.last(5)
+
+	@tweet_trends = Title.getTwitterTrends
+
 end
 
 def create
