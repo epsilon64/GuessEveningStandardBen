@@ -1,7 +1,8 @@
 GuessEv::Application.routes.draw do
   
-
   match "/users/todaytitle" => "users#todaytitle", :constraints => { :id => /[0-9]+/ }
+  match "/users/showranking" => "users#showranking"
+  match "/users/showpreviousheadlines" => "users#showpreviousheadlines"
   #match "/users/:id" => "users#todaytitle", :constraints => { :id => /[0-9]+/ }
 
   devise_for :users, :controllers => {:sessions => 'devise:sessions'}, :skip => [:sessions] do

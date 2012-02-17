@@ -1,6 +1,5 @@
 class TitlesController < ApplicationController
 
-require 'user'
 
 def index
 	@title = Title.new

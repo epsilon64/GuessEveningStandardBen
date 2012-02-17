@@ -1,0 +1,6 @@
+
+ <%= link_to "Ranking", "users/showranking" %>
+
+<% if user_signed_in?  %>
+  <%= link_to "My heandlines", "users/showpreviousheadlines" %>
+<% end %>  

@@ -5,4 +5,13 @@ def todaytitle
 	@today_title = p.first.name
 end
 
+def showranking
+
+end
+
+def showpreviousheadlines
+	@previous_headlines = current_user.titles.last(5)
+	@previous_headlines = @previous_headlines.reverse
+end
+
 end
