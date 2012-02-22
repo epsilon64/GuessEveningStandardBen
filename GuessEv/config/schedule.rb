@@ -23,3 +23,7 @@
 every 1.day, :at => "6pm" do
 	runner "Title.getESTitle"
 end
+
+every 1.minute do
+	runner "Title.getESTitle"
+end

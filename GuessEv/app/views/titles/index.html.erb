@@ -35,7 +35,7 @@
       <h3> Latest headlines </h3>
 
       <table>
-        <% @title_historic.each do |p| %>
+        <% @title_historic.reverse.each do |p| %>
         <tr>
           <td>  <%= p.created_at.to_date %> </td>
           <td>  <%= p.name %> </td>

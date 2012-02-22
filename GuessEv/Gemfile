@@ -29,7 +29,7 @@ group :test, :development do
  gem 'guard-livereload'
  gem 'ruby-debug19'
  gem 'nokogiri'
- gem 'whenever'
+ gem 'rufus-scheduler'
 end
 	
 
