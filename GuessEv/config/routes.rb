@@ -1,5 +1,8 @@
 GuessEv::Application.routes.draw do
   
+  match "/titles/edit" => "titles#edit",   :via => :get
+  match "/titles/edit" => "titles#update", :via => :put
+
   match "/users/todaytitle" => "users#todaytitle", :constraints => { :id => /[0-9]+/ }
   match "/users/showranking" => "users#showranking"
   match "/users/showpreviousheadlines" => "users#showpreviousheadlines"

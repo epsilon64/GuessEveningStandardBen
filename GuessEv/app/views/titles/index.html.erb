@@ -19,15 +19,20 @@
     </div>
 
     <div>
-      <%= form_for @title do |f| %>
-        <%= f.text_field :name %>
-        <%= f.submit "Post" %>
+      <% if @today_title.nil? %>
+        <%= form_for @title do |f| %>
+          <%= f.text_field :name %>
+          <%= f.submit "Post" %>
+        <% end %>
+      <% else %>
+        <%= @today_title %>
+        <%= link_to "Edit", "/titles/edit" %>
       <% end %>
     </div> 
 
     <div>
       <h2> Need inspiration? </h2>
-      <br> Latest headlines </br>
+      <h3> Latest headlines </h3>
 
       <table>
         <% @title_historic.each do |p| %>
@@ -38,7 +43,7 @@
         <% end %>
        </table>
 
-       <br> Twitter trends </br>
+       <h3> Twitter trends </h3>
 
         <table>
         <% @tweet_trends.each do |p| %>

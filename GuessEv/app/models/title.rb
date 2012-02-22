@@ -1,5 +1,8 @@
 class Title < ActiveRecord::Base
 
+has_and_belongs_to_many :keywords
+belongs_to :user
+
 require 'open-uri'
 require 'json'
 require 'nokogiri'
@@ -15,7 +18,11 @@ def duplicatePostsCheck
 	todayTitlesOfUser = self.user.getTodayUserTitle
 
 	unless todayTitlesOfUser.empty?
-		errors.add :name,  "User #{self.user_id} has already posted today"
+		if self.id == todayTitlesOfUser.first.id
+			return
+		else
+			errors.add :name,  "User #{self.user_id} has already posted today"
+		end
 	end
 end
 
@@ -27,10 +34,11 @@ def create_keywords
 	@title_to_parse = self.name
 	keywordsArray = parseTitles @title_to_parse
 	keywordsArray.each do |t|
-		if Keyword.find_by_name t
-			keyw = Keyword.find_by_name t
-			keyw.count += 1
-			keyw.save
+		dateEndInterval = User.dateEndInterval
+		keyw = Keyword.where(:created_at => dateEndInterval-1.day..dateEndInterval, :name => t)
+		if !keyw.empty?
+			keyw.first.increment(:count)
+			keyw.first.save
 			self.keywords << keyw
 			self.save
 		else
@@ -69,8 +77,5 @@ def self.getTwitterTrends
 	end
 	return tweet_trends
 end
-
-has_and_belongs_to_many :keywords
-belongs_to :user
 
 end
