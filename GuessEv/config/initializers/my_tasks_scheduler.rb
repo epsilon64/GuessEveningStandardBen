@@ -1,18 +1,22 @@
 require 'rubygems'   # Need this to make use of any Gem, in our case it is rufus-scheduler
 require 'rufus/scheduler'  # Need this to make use of Rufus::Scheduler
-
+require 'title'
+require 'user'
 
 # OPTION 1: If you want to run the scheduler as part of your very own rails process then you may adopt this option
 
 scheduler = Rufus::Scheduler.start_new
 # Making use of the syntax used in Crontab
 
-scheduler.every '15m' do  
-  	puts 'Twitter'
-end
+scheduler.cron '0 19 * * *' do
 
-scheduler.every '1d', :at => "00:40:00" do
-	puts 'Headlines'
+	#SuperUser get the today's headline
+	p = SuperUser.first
+	answer = p.getTodayUserTitle
+	if answer.empty?
+		title_of_the_day = Title.getESTitle
+		p.titles.create :name => title_of_the_day
+	end
 end
 
 

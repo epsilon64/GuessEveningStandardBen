@@ -78,4 +78,10 @@ def self.getTwitterTrends
 	return tweet_trends
 end
 
+def calculateRanking
+
+	answer_keywords = SuperUser.first.getTodayUserTitle.first.id
+
+end
+
 end

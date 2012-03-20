@@ -1,16 +1,11 @@
 class TitlesController < ApplicationController
 
+layout 'main'
+
 def index
+	p = SuperUser.first
 	#Instanciate object for creation
 	@title = Title.new
-
-	#SuperUser get the today's headline
-	p = SuperUser.first
-	answer = p.getTodayUserTitle
-	if answer.empty?
-		title_of_the_day = Title.getESTitle
-		p.titles.create :name => title_of_the_day
-	end
 
 	#Gets the 5 last super user headlines
 	@title_historic = p.titles.last(5)
@@ -28,7 +23,6 @@ def index
 	else
 		@today_title = nil
 	end
-
 end
 
 def create

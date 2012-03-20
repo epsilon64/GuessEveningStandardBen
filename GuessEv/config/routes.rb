@@ -75,5 +75,6 @@ GuessEv::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   resources :titles
+  resources :users, :only => [:new, :create, :show, :edit, :update, :destroy]
 
 end

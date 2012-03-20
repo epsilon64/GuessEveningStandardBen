@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+  <HEAD>
+    <TITLE>Title page</TITLE>
+
+    <%= stylesheet_link_tag "bootstrap" %>
+
+  </HEAD>
+  
+  <BODY>
+  <div class="container">
+
+  <% if flash[:error] %>
+     <div class="alert alert-error"> <%= flash[:error] %> </div>
+  <% end %>
+
+  <br><%= render "shared/topbar" %> </br>
+  <br> <%= render "shared/logger" %> </br>
+
+  <h1> Guess evening standard </h1>
+
+  <%= yield -%>
+
+  </div>   
+  </BODY>
+</HTML>

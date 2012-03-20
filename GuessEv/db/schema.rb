@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216203514) do
+ActiveRecord::Schema.define(:version => 20120223170651) do
 
   create_table "keywords", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120216203514) do
     t.datetime "updated_at", :null => false
     t.string   "name"
     t.integer  "user_id"
+    t.float    "rating"
   end
 
   create_table "users", :force => true do |t|
