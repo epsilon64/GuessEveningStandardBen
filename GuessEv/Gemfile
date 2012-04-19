@@ -30,6 +30,12 @@ group :test, :development do
  gem 'ruby-debug19'
  gem 'nokogiri'
  gem 'rufus-scheduler'
+ gem 'minitest'
+ gem 'activeadmin'
+ gem "meta_search",    '>= 1.1.0.pre'
+ gem 'omniauth-facebook'
+ gem 'omniauth-openid'
+ gem 'koala'
 end
 	
 

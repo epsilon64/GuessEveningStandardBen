@@ -1,5 +1,11 @@
 GuessEv::Application.routes.draw do
   
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   match "/titles/edit" => "titles#edit",   :via => :get
   match "/titles/edit" => "titles#update", :via => :put
 

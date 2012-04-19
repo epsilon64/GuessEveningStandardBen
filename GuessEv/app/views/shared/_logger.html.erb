@@ -5,6 +5,7 @@
         Signed in as <%= current_user.email %>
       <% else %>
         <%= form_for "user", :url => user_session_path, :html => {:class => "well form-inline"} do |f| %>
+        <div>
         Login:
         <%= f.text_field :email, :class => "input-small", :placeholder => "email" %>
         Password:
@@ -13,7 +14,13 @@
         <%= f.label :remember_me, :class => "checkbox" %>
         <%= f.submit 'Sign in', :class => "btn" %>
         <%= link_to "Forgot your password?", new_password_path('user') %>
-        <% end %>
+        </div>
+        <div>
+          <br/>
+          <%= link_to image_tag("fb.png", :width => "125", :height => "75"), user_omniauth_authorize_path(:facebook) %>
+          <%= link_to image_tag("google.png", :width => "125", :height => "75"), user_omniauth_authorize_path(:google) %>
+        </div>
+        <% end %> 
       <% end %>
       </td>
       <td>
